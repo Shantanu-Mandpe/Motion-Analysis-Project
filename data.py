@@ -44,6 +44,7 @@ class Data:
 
         self.pressure = data2["Pressure"]
         self.pressure_time = data2["time"]
+        return [[self.gps_time,self.gps_longitude,self.gps_latitude],[self.pressure,self.pressure_time]]
 
     def derive_data(self):
         i = 0
@@ -67,9 +68,10 @@ class Data:
         self.times.append(0)
         self.aslopes.append(0)
         self.derive_data = [self.slopes,self.aslopes,self.times]
+        return [self.slopes,self.aslopes,self.times]
         
 
-    def range(self):
+    def der_range(self):
         mean = self.derive_data[2]
         std = statistics.stdev(self.slopes)
         self.range =  std
